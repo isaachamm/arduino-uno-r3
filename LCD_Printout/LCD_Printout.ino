@@ -1,27 +1,24 @@
-#include <LiquidCrystal.h>// include the library code
-/**********************************************************/
-char intruderArray[]="Intruder";  //the string to print on the LCD
-char alertArray[]="Alert";  //the string to print on the LCD
-int tim = 500;  //the value of delay time
-// initialize the library with the numbers of the interface pins
+#include <LiquidCrystal.h>
+
+char intruderArray[]="Intruder"; 
+char alertArray[]="Alert"; 
 LiquidCrystal lcd(7, 6, 10, 11, 12, 13);
 
 const int pirPin = 2;
 const int ledPin = 4;
 int state = 0;
-/*********************************************************/
 void setup()
 {
-  lcd.begin(16, 2);  // set up the LCD's number of columns and rows: 
-  pinMode(pirPin, INPUT);  // Set the PIR pin as an input
+  lcd.begin(16, 2);  
+  pinMode(pirPin, INPUT);  
   pinMode(ledPin, OUTPUT);
   Serial.begin(9600);    
 }
-/*********************************************************/
+
 void loop() 
 {
 
-  lcd.setCursor(0,0);  // set the cursor to column 15, line 0
+  lcd.setCursor(0,0); 
   state = digitalRead(pirPin);         
   if (state == HIGH) {                 
     Serial.println("Somebody here!");  
@@ -33,7 +30,5 @@ void loop()
     Serial.println("Monitoring...");
     lcd.clear();
     digitalWrite(ledPin, LOW);
-    delay(100);
   }
 }
-/************************************************************/
