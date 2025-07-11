@@ -30,5 +30,6 @@ void loop()
     Serial.println("Monitoring...");
     lcd.clear();
     digitalWrite(ledPin, LOW);
+    delay(100);
   }
 }
